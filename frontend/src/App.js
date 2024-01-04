@@ -1,22 +1,11 @@
 import './App.css';
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom';
-import AddPodcast from './Add-Podcast';
-import Home from './Home';
+import AddPodcast from './Add-Podcast/Add-Podcast';
+import Home from './Home/Home';
+import AddRecord from './Add-Record/Add-Record';
 
 function App() {
-  const [data, setData] = useState([]);
-
-  useEffect(() => {
-    fetch('http://localhost:5000/api/v1/podcasts')
-    .then((res) => res.json())
-    .then((data) => {
-      console.log(data.list);
-      setData(data.list)
-    })
-    .catch((err) => console.error('Error fetching data: ', err));
-  }, []);
-
   return (
     <Router>
     <div className="App">
@@ -32,11 +21,17 @@ function App() {
         <Link to="/">
           <button>Home</button>
         </Link>
+
+        <hr />
+        <Link to="/add-record">
+          <button>Add Record</button>
+        </Link>
         
       </header>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/add" element={<AddPodcast />} />
+        <Route path="/add-record" element={<AddRecord />} />
       </Routes>
     </div>
     </Router>

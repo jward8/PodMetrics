@@ -1,16 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom';
 import './Home.css';
+import { useDispatch } from 'react-redux';
+import { setPodcasts } from '../actions';
 
 const Home = () => {
-    const [data, setData] = useState([]);
+  const [data, setData] = useState([]);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     fetch('http://localhost:5000/api/v1/podcasts')
     .then((res) => res.json())
     .then((data) => {
-        console.log(data.list);
-      setData(data.list)
+        console.log('a' + data.data);
+      setData(data.data);
+      dispatch(setPodcasts(data.data));
     })
     .catch((err) => console.error('Error fetching data: ', err));
   }, []);
