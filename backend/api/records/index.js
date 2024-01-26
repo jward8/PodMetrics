@@ -1,1 +1,1 @@
-exports.module = require('./podcast.routes');
+module.exports = require('./record.routes');

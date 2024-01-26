@@ -5,4 +5,10 @@
     justify-content: center;
     font-size: calc(10px + 1vmin);
     color: white;
+
+    form {
+      background-color: #e5e7eb;      
+      padding: 2rem;
+      border-radius: 0.5rem;  
+    }
   }

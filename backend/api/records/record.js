@@ -1,22 +1,19 @@
 const mongoose = require('mongoose');
-const Record = require('./record.model');
+const Record = require('../models/Record');
 
-exports.createRecord = async (req, res) => {
-    const {
-        podcast,
-        episode,
-        rating,
-        platform
-    } = req.body;
+exports.createRecord = async (podcast, episode, rating, platform) => {
     try {
+        let title = episode.title;
+        let duration = episode.duration;
         const newRecord = new Record({
             podcast,
-            episode,
+            title,
+            duration,
             rating,
             platform
         });
         newRecord.save();
-        res.status(200).json(newRecord);
+        return {record: newRecord};
     } catch (error) {
         res.status(500).json({ message: error.message });
     }

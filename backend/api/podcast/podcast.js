@@ -32,23 +32,32 @@ exports.addPodcast = async (podName, feed) => {
     }
 }
 
-exports.getPodcastEpisodes = async (feed) => {
-    let parser = new Parser();
-        let podcastList = [];
-
-        for (let podcast of data) {
-            let episodes = [];
-            let rss = await parser.parseURL(podcast.feed);
-            for (let episode of rss.items) {
+exports.getPodcastEpisodes = async (podcastId) => {
+    try {
+        let episodes = [];
+        let parser = new Parser();
+        const data = await Podcast.findById(podcastId);
+        let rss = await parser.parseURL(data.feed);
+        let id = 0;
+        for(let item of rss.items) {
+            if (item.itunes.duration.includes(':')) {
                 episodes.push({
-                    title: episode.title,
-                    link: episode.link,
-                    pubDate: episode.pubDate
+                    id: id++,
+                    title: item.title,
+                    duration: item.itunes.duration,
+                });
+            } else {
+                var date = new Date(null);
+                date.setSeconds(item.itunes.duration);
+                episodes.push({
+                    id: id++,
+                    title: item.title,
+                    duration: date.toISOString().substr(11, 8),
                 });
             }
-            podcastList.push({
-                ...podcast._doc,
-                episodes: episodes
-            });
         }
+        return {episodes: episodes};
+    } catch (err) {
+        console.log(err);
     }
+}

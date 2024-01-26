@@ -10,3 +10,8 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
+
+#spinner {
+  height: 100px;
+  width: 100px;
+}

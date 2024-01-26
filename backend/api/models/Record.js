@@ -2,12 +2,17 @@ const { Schema, model } = require('mongoose');
 
 const recordSchema = new Schema({
     podcast: {
+        type: Schema.Types.ObjectId,
+        required: true,
+        ref: 'podcasts'
+    },
+    title: {
         type: String,
         required: true
     },
-    episode: {
+    duration: {
         type: String,
-        required: true
+        required: false
     },
     date: {
         type: Date,
