@@ -30,8 +30,8 @@ const Home = () => {
         {isLoading ?  <CircularProgress id='spinner' /> : null}
         <div className='grid sm:grid-cols-2 md:grid-cols-5 gap-3'>
             {data.map((item, index) => (
-                <div key={index}>
-                    <img style={albumCover} src={item.image} alt={item.title} />
+                <div key={index} >
+                    <img className='podcastCover' src={item.image} alt={item.title} />
                 </div>
             ))}
         </div>
@@ -39,9 +39,5 @@ const Home = () => {
   );
 }
 
-const albumCover = {
-    width: 200,
-    height: 200,
-  }
 
 export default Home;
