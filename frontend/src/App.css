@@ -5,17 +5,15 @@
 }
 
 .App-header {
-  background-color: #1c1d1d;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
   gap: 20rem;
-  width: 15vw;
-  border-radius: 20px;
-  height: 95vh;
+  width: 100%;
+  padding-top: 1rem;
 }
 
 .App-link {
@@ -24,7 +22,7 @@
 
 .App {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   width: 100vw;
   justify-content: center;
   align-items: center;
@@ -32,7 +30,7 @@
 
 .Links {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   gap: 2rem;
 }
 

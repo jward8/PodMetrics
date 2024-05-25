@@ -15,33 +15,17 @@ const AddRecord = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [episodeList, setEpisodesList] = useState(['']);
 
-    // useEffect(() => {
-    //     if (selectedPodcast) {
-    //         fetch(`http://localhost:5000/api/v1/podcasts/episodes?podcast=${selectedPodcast}`)
-    //             .then(response => response.json())
-    //             .then(data => {
-    //                 setEpisodesList(data);
-    //                 console.log(data);
-    //             })
-    //             .catch(error => {
-    //                 console.error('Error:', error);
-    //             });
-    //     }
-    // }, [selectedPodcast]);
-
     const handleSubmit = (e) => {
         e.preventDefault();
+        let podcastId = podcasts.filter((podcast) => podcast.title === selectedPodcast)[0]._id;
+        let selectedEpisode = episodeList.filter((episodeItem) => episodeItem.title === episode)[0];
 
         const newRecord = {
-            podcast: selectedPodcast,
-            episode: episode,
+            podcast: podcastId,
+            episode: selectedEpisode,
             rating: rating,
             platform: platform
         };
-
-        setSelectedPodcast(podcasts.filter((podcast) => podcast.title === e.target.textContent)[0]._id);
-
-        setEpisode(episodeList.filter((episode) => episode.title === e.target.textContent)[0]);
 
         console.log(newRecord);
 
