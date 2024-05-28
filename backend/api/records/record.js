@@ -27,3 +27,12 @@ exports.getRecords = async (podcastId) => {
         res.status(500).json({ message: error.message });
     }
 }
+
+exports.getAllRecords = async () => {
+    try {
+        const records = await Record.find();
+        return {records};
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+}

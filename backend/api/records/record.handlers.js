@@ -1,4 +1,4 @@
-const { createRecord, getRecords } = require("./record");
+const { createRecord, getRecords, getAllRecords } = require("./record");
 
 exports.addRecord = async (req, res) => {
     const {
@@ -18,12 +18,19 @@ exports.addRecord = async (req, res) => {
 }
 
 exports.getRecords = async (req, res) => {
-    const { podcastId } = req.query;
     try {
-        await getRecords(podcastId)
-        .then((data) => {
-            res.status(200).json(data);
-        });
+        if (Object.keys(req.query).length > 0) {
+            const { podcastId } = req.query;
+            await getRecords(podcastId)
+            .then((data) => {
+                res.status(200).json(data);
+            });
+        } else {
+            await getAllRecords()
+            .then((data) => {
+                res.status(200).json(data);
+            });
+        }
     } catch (error) {
         res.status(500).json({ message: error.message });
     }

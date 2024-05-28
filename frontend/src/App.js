@@ -17,17 +17,14 @@ function App() {
         <div className="Links">
           <Link to="/" className='linkItem'>
             <FontAwesomeIcon className='icons' icon={faHouse} fixedWidth/>
-            <button className='pageLink'>Home</button>
           </Link>
 
           <Link to="/add" className='linkItem'>
             <FontAwesomeIcon className='icons' icon={faPlus} fixedWidth/>
-            <button className='pageLink'>Add Podcast</button>
           </Link>
 
           <Link to="/add-record" className='linkItem'>
             <FontAwesomeIcon className='icons' icon={faFileMedical} fixedWidth/>
-            <button className='pageLink'>Add Record</button>
           </Link>
         </div>
         
