@@ -5,10 +5,11 @@ exports.addRecord = async (req, res) => {
         podcast,
         episode,
         rating,
-        platform
+        platform,
+        dateListened
     } = req.body;
     try {
-        await createRecord(podcast, episode, rating, platform)
+        await createRecord(podcast, episode, rating, platform, dateListened)
         .then((data) => {
             res.status(200).json(data);
         });

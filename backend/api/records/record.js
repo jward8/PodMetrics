@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Record = require('../models/Record');
 
-exports.createRecord = async (podcast, episode, rating, platform) => {
+exports.createRecord = async (podcast, episode, rating, platform, dateListened) => {
     try {
         let title = episode.title;
         let duration = episode.duration;
@@ -10,7 +10,8 @@ exports.createRecord = async (podcast, episode, rating, platform) => {
             title,
             duration,
             rating,
-            platform
+            platform,
+            dateListened
         });
         newRecord.save();
         return {record: newRecord};
