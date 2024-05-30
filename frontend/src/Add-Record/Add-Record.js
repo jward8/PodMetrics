@@ -1,18 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Button from '@mui/material/Button';
 import './styles.css';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import Autocomplete from '@mui/material/Autocomplete';
-import { TextField, Rating, Typography, CircularProgress } from '@mui/material';
+import { TextField, Rating, Typography } from '@mui/material';
 
 const AddRecord = () => {
-    const dispatch = useDispatch();
     const podcasts = useSelector((state) => state.podcasts);
     const [selectedPodcast, setSelectedPodcast] = useState('');
     const [episode, setEpisode] = useState('');
     const [rating, setRating] = useState('');
     const [platform, setPlatform] = useState('');
-    const [isLoading, setIsLoading] = useState(false);
     const [episodeList, setEpisodesList] = useState(['']);
 
     const handleSubmit = (e) => {

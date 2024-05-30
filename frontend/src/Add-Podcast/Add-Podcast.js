@@ -1,7 +1,10 @@
 import React, { useState} from 'react';
 import './Add-Podcast.css';
 import Button from '@mui/material/Button';
-import Alert from '@mui/material/Alert';
+import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
+import EmojiEmotionsIcon from '@mui/icons-material/EmojiEmotions';
+import { TextField } from '@mui/material';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 
 
 const AddPodcast = () => {
@@ -46,31 +49,42 @@ const AddPodcast = () => {
     };
 
     return (
-        <div className='AddPage'>
+        !alertVisible ? (<div className='AddPage'>
             <h3>What's the Podcast?</h3>
             <form onSubmit={handleSubmit} className='AddForm'>
                 <div className='FormInput'>
-                    <label htmlFor='podcastName'>Podcast Name:</label>
-                    <input
-                        type='text'
+                    <TextField
                         id='podcastName'
+                        label='Podcast Name'
                         value={podcastName}
+                        variant='filled'
+                        sx={{ input: { color: 'white'} }}
                         onChange={(e) => setPodcastName(e.target.value)}
-                    />
+                    />  
                 </div>
 
                 <div className='FormInput'>
-                    <label htmlFor='rssFeed'>RSS Feed:</label>
-                    <input
-                        type='text'
+                    <TextField
                         id='rssFeed'
+                        label='RSS Feed'
                         value={rssFeed}
+                        variant='filled'
+                        sx={{ input: { color: 'white'} }}
                         onChange={(e) => setRssFeed(e.target.value)}
                     />
                 </div>
-                <Button variant="contained" type='submit'>Add Podcast</Button>
+                <Button 
+                    variant="contained" 
+                    type='submit' 
+                    endIcon={alertVisible ? <EmojiEmotionsIcon/> : <AddCircleOutlineIcon/>}
+                    color={alertVisible ? 'success' : 'primary'}>
+                        {alertVisible ? 'Podcast Added!' : 'Add Podcast'}
+                </Button>
             </form>
-            { alertVisible && <Alert className='successAlert' severity="success">Podcast Added!</Alert>}
+        </div>) :
+        <div className='Alert'>
+            <CheckCircleIcon color='success' fontSize='large'/>
+            <h3>Podcast Added!</h3>
         </div>
     );
 };

@@ -54,6 +54,15 @@
   height: 30vh;
 }
 
+#podcast {
+  width: 30vw;
+  height: 20vh;
+}
+
+#record {
+  width: 45vw;
+}
+
 .modalContent:focus-visible {
   outline: none;
 }
