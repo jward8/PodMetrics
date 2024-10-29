@@ -26,6 +26,10 @@ const recordSchema = new Schema({
         type: String,
         required: false
     },
+    dateListened: {
+        type: Date,
+        required: false
+    }
 });   
 
 module.exports = model('Record', recordSchema);

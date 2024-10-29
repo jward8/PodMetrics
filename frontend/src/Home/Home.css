@@ -61,6 +61,7 @@
 
 #record {
   width: 45vw;
+  height: 45%;
 }
 
 .modalContent:focus-visible {

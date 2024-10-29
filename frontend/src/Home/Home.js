@@ -31,11 +31,9 @@ const Home = () => {
 
   useEffect(() => {
     if (selectedPodcast && Object.keys(selectedPodcast).length > 0) {
-      console.log(selectedPodcast);
       fetch(`http://localhost:5000/api/v1/records?podcastId=${selectedPodcast._id}`)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data.records);
         setRecords(data.records);
       })
       .catch((err) => {
@@ -59,7 +57,6 @@ const Home = () => {
       }
       const [hours, minutes, seconds] = record.duration.split(':').map(Number);
       const recordDuration = Duration.fromObject({ hours: hours, minutes: minutes, seconds: seconds });
-      console.log(recordDuration);
       totalDuration = totalDuration.plus(recordDuration);
     });
     return totalDuration.toFormat('hh:mm:ss');
@@ -102,7 +99,7 @@ const Home = () => {
               <div className='dateBox statBox'>
                 <h3>Last Listened</h3>
                 <div className='statContent'>
-                  {records.length > 0 ? new Date(records[records.length - 1].date).toLocaleDateString() : 'N/A'}
+                  {records.length > 0 ? new Date(records[records.length - 1].dateListened).toLocaleDateString() : 'N/A'}
                 </div>
               </div>
             </div>      

@@ -7,6 +7,8 @@ import AddRecord from './Add-Record/Add-Record';
 import { Box, Modal, IconButton, ThemeProvider, createTheme, CssBaseline} from '@mui/material';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import PostAddIcon from '@mui/icons-material/PostAdd';
+import { LocalizationProvider } from '@mui/x-date-pickers';
+import { AdapterLuxon } from '@mui/x-date-pickers/AdapterLuxon';
 
 function App() {
   const [open, setOpen] = useState(false);
@@ -19,6 +21,7 @@ function App() {
   };
   const handleClose = () => { setOpen(false); };
   return (
+    <LocalizationProvider dateAdapter={AdapterLuxon}>
     <ThemeProvider theme={darkTheme}>
       <CssBaseline />
       <Router>
@@ -57,6 +60,7 @@ function App() {
       </div>
       </Router>
     </ThemeProvider>
+    </LocalizationProvider>
   );
 };
 
