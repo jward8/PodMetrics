@@ -28,8 +28,6 @@ const AddRecord = () => {
             platform: platform
         };
 
-        console.log(newRecord);
-
         fetch('http://localhost:5000/api/v1/records', {
             method: 'POST',
             headers: {
